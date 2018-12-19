@@ -1,0 +1,97 @@
+<?php
+##############################
+# Script de notificación de formas
+# requiere configuración de variables de entorno
+# del sistema
+# consulte el manual de su SO para ello.
+# En Ubuntu export env VARIABLE="valor"
+# Ha de configurarse la eleccion de PHPMAILER
+# en su versión 5.2 o 6.0 y el uso de composer
+##############################
+
+
+// DESCOMENTAR PARA USAR PHPMAILER 5.2.X
+#require '../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
+// DESCOMENTAR PARA USAR PHPMAILER 6.X
+#use PHPMailer\PHPMailer\PHPMailer as PHPMailer;
+#use PHPMailer\PHPMailer\Exception as PHPMailer;
+//PARA USAR SIN composer
+require '../lib/PHPMailer/PHPMailerAutoload.php';
+
+
+// DESCOMENTAR PARA USAR CON COMPOSER
+#require '../vendor/autoload.php';
+
+function notifyNewUser($identificador, $emaul_user, $apellidos_usuario, $nombre_usuario, $email_control){
+
+
+  session_start();
+
+
+
+
+
+
+  $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+  try {
+      //Server settings
+      $mail->SMTPDebug = 0;
+      $mail->CharSet = "UTF-8";
+      $mail->setLanguage('es', '/vendor/phpmailer/phpmailer/language/');                               // Enable verbose debug output
+      $mail->isSMTP();                                      // Set mailer to use SMTP
+      $mail->Host = 'mail.us.es';  // Specify main and backup SMTP servers
+      $mail->SMTPAuth = true;                               // Enable SMTP authentication
+      $mail->Username = getenv('FIRMABUS_USERMAIL');                 // SMTP username
+      $mail->Password = getenv('FIRMABUS_PASSWDMAIL');                           // SMTP password
+      $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+      $mail->Port = 587;                                    // TCP port to connect to
+
+      //Recipients
+  #    $mail->setFrom(getenv('FIRMABUS_FROMMAIL'), 'firm@BUS');
+      $mail->addAddress($email_user);     // Add a recipient
+      $mail->addBCC($email_gestor, "Gestor firm@BUS" );
+
+
+      //Content
+      $mail->isHTML(true);                                  // Set email format to HTML
+      $mail->Subject = '[firm@BUS DEV] Comprobante de operación de ' . $accion;
+      $mail->Body    = '  <div style="padding: 2%; margin: 5%; margin-bottom: 0%; aling-items: center; justify-content: center; background-color: #F7F8E0; color: #3104B4; font-family: Verdana, Arial, Helvetica, sans-serif; ">' .
+                       '    <div>' .
+                       '      <h1>firm@BUS</h1>' .
+                       '      <h2 style="margin-left: 3%">Nuevas altas</h2>' .
+                       '    </div>' .
+                       '    <div style="margin-top:5%; padding-right: 3% ;padding-left: 3%; padding-top: 0.5%; margin-bottom: 3%; background-color: white; color: black;">' .
+                       '      <p>A continuación se indican los datos de acceso al sistema de firma de la Biblioteca para el control de usuarios establecido. En caso de incoherencía o error, dirijase a su gestor.</p>' .
+                       '      <p><spam style="padding: 1%; font-weight: bold">Apellidos y nombre:</spam> <spam style="font-size: 160%;">' . $apellidos_usuario . ', ' . $nombre_usuario . '</spam>' .
+                       '      <br><spam style="padding: 1%; font-weight: bold">Identificador asociado:</spam> <spam style="font-size: 160%;">' . $identificador] . '</spam>' .
+                       '    <p style="text-align: right; font-size: 60%;">' . $_SESSION['timest'] . '</p>' .
+                       '    </div>' .
+                       '  </div>' .
+                       '  <div style="padding-top: 1%; padding-bottom: 3%;margin: 5%; margin-top: 1% ;aling-items: center; justify-content: center; background-color: #424242; color: #FFFF00; font-family: Verdana, Arial, Helvetica, sans-serif; ">' .
+                       '    <p style="text-align: center">firm@BUS v1.0.4 20180528 - Servicio de Informática y Tecnología <br>' .
+                       '       Biblioteca de la Universidad de Sevilla - Universidad de Sevilla<br>' .
+                       '       Mensaje envíado automáticamente.</p>' .
+                       '  </div>';
+
+      $mail->AltBody = "#########################################\n" .
+                       "                firm@BUS                 \n\n" .
+                       "#########################################\n" .
+                       "Comprobante de  Nuevas altas \n\n" .
+                       "A continuación se indican los datos de acceso al sistema de firma de la Biblioteca para el control de usuarios establecido. En caso de incoherencía o error, dirijase a su gestor.\n\n" .
+                       "* Apellidos y nombre: " . $apellidos_usuario . ", " . $nombre_usuario . "\n" .
+                       "* Identificador: " . $identificador . "\n" .
+                       $_SESSION['timest'] . "\n\n" .
+                       "firm@BUS v1.0.4 20180528 - Servicio de Informática y Tecnología \n  Biblioteca de la Universidad de Sevilla - Universidad de Sevilla \n  Mensaje envíado automáticamente. ";
+
+      $mail->send();
+
+    } catch (Exception $e) {
+  #    echo 'No se ha podido enviar el correo. Mailer Error: ', $mail->ErrorInfo;
+      $mail = null;
+  #    $_REQUEST['ERR_MSG'] = "No se pudo enviar el correo.";
+      header("location: ../index.php");
+
+  }
+
+
+}

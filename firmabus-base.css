@@ -1,0 +1,207 @@
+
+#video {
+  border: 2px solid #8A0829;
+  box-shadow: 5px 2px 3px #F6CED8;
+  width: 640px;
+  height: 480px;
+}
+
+#foto {
+  border: 2px solid #FFBF00;
+  box-shadow: 5px 2px 3px #F2F5A9;
+  width:320px;
+  height:240px;
+}
+
+#canvas {
+  display:none;
+}
+
+.header {
+  background-color: #FFBF00;
+  border-top-style: solid;
+  border-top-color: #8A0829;
+  border-top-width: 8px;
+  color: #8A0829;
+  margin: 0;
+  padding: 300px:
+}
+
+.footer {
+  background-color: #2E2E2E;
+  color: #FFFFFF;
+  padding: 2%;
+}
+
+.info-usuario {
+  display: inline-block;
+  background: #E6E6E6;
+  height: auto;
+  float: right;
+  width: 420px;
+  margin: 15px;
+}
+
+.caja-admin{
+
+  float: left;
+  width: 95%;
+}
+
+.caja-admin .form {
+  margin: 20px;
+
+}
+
+
+
+.cajas-borde{
+  border-style: solid;
+  border-color: #DBA901;
+  border-width: 2px;
+  border-top-color: #F3E2A9;
+  border-top-width: 2px;
+  border-left-color: #F3E2A9;
+  border-left-width: 2px;
+
+  border-top: 0px;
+}
+
+.info-usuario p{
+  margin-left: 3%;
+}
+
+
+
+.menu-firma {
+  display: inline-block;
+  background: #E6E6E6;
+  height: auto;
+  float: right;
+  width: 220px;
+  margin: 15px;
+  align-items: center;
+}
+
+.inicio-procedimiento {
+  display: inline-block;
+  float: top;
+  background: #E6E6E6;
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  padding-bottom: 3%;
+  align-items: center;
+
+}
+
+.inicio-procedimiento p {
+  align-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+.header-estrecho {
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 0%;
+  margin-bottom: 3%;
+  padding: 0%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.camara {
+  width: 340px;
+  display:inline-block;
+}
+
+.salidafoto {
+  width: 340px;
+  display:inline-block;
+}
+
+#tomarfoto {
+  width: 30%;
+  height: 30%;
+  display:block;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  bottom:32px;
+  background-color: #FACC2E;
+  border-top border-right: 2px solid #FFFFFF;
+  border-left border-bottom: : 1px solid #B45F04;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  font-variant-position: right;
+  color: #8A0829;
+
+  background-image: url(https://openclipart.org/image/300px/svg_to_png/275084/DSLR_Camera_REMIX_By_DG-RA.png&disposition=attachment);
+
+  background-repeat: no-repeat;
+  background-size: 15%;
+  background-position: left;
+}
+
+#entrar, #salir{
+
+  width: 200px;
+  height: 150px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%
+
+  bottom:320px;
+  background-color: #FACC2E;
+  border-top border-right: 2px solid #FFFFFF;
+  border-left border-bottom: : 1px solid #B45F04;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: #8A0829;
+
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: center;
+}
+
+#identificar{
+    display: block;
+    width: 235px;
+    height: 60px;
+
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: 20%;
+    background-color: #FACC2E;
+    border-top border-right: 2px solid #FFFFFF;
+    border-left border-bottom: : 1px solid #B45F04;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    color: #8A0829;
+    align-items: center;
+
+}
+
+#entrar {
+  background-image: url(img/entrar_button.png);
+
+}
+
+.salir-img {
+  background-image: url(img/salir_button.png);
+}
+
+
+
+.contentarea {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  width: 760px;
+}
